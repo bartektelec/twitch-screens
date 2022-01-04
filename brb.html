@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class='body'>
+    <div class='text'>
+
+        <p class='upper-text split-text'>florquee is</p>
+        <p class='accented-text split-text'>NOW OFFLINE</p>
+        <p class='upper-text split-text text-tiny'>join !discord</p>
+    </div>
+</body>
+
+<script>
+    const upperLetters = [...document.querySelectorAll('.upper-text')];
+    upperLetters.forEach((element, containerIndex) => {
+        const upperSplitted = [...element.textContent];
+        const letterElements = upperSplitted.map((letter, index, arr) => {
+            const offsetDelay = Math.abs(index - arr.length / 2)
+            return `<span class='letter' style="animation-delay: ${offsetDelay * 0.1 + containerIndex}s; transform-origin:${index < arr.length / 2 ? '200%' : '-200%'} center">${letter}</span>`;
+        }).join('');
+
+        element.innerHTML = letterElements;
+    })
+
+    const accentedLetters = document.querySelector('.accented-text');
+    const accentedSplitted = [...accentedLetters.textContent];
+    const accentedElements = accentedSplitted.map((letter, index, arr) => {
+        const offsetDelay = Math.abs(index % 3)
+        return `<span class='letter' style="animation-delay: ${offsetDelay * 0.1}s;">${letter}</span>`;
+    }).join('');
+
+    accentedLetters.innerHTML = accentedElements;
+</script>
+
+</html>

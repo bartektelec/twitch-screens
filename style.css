@@ -1,0 +1,170 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Allan:wght@400;700&display=swap');
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    --primary-color: #5518CE;
+    --secondary-color: #FF1C8D;
+    --lightgray-color: #CDCDCD;
+    overflow: hidden;
+    font-family: 'Allan', cursive;
+    position: relative;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./topography.png');
+    background-repeat: round;
+    background-size: 200%;
+    animation: backgroundMove 15s infinite alternate ease;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: top left;
+    }
+    
+    
+    100% {
+        background-position: bottom right;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1) rotateZ(0deg);
+    }
+    2% {
+        transform: scale(1.25) rotateZ(5deg);
+    }
+    5% {
+        transform: scale(1) rotateZ(0deg);
+    }
+    
+    45% {
+        transform: scale(1) rotateZ(0deg);
+    }
+    
+    49% {
+        transform: scale(0.8) rotateZ(0deg); 
+    }
+    52% {
+        transform: scale(1.1) rotateZ(0deg); 
+    }
+    55% {
+        transform: scale(1) rotateZ(0deg);
+    }
+    
+
+
+}
+
+.body::before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    inset:0;
+    background: var(--primary-color);
+    mix-blend-mode: multiply;
+}
+
+.text {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: drop-shadow(0px 0px 15px rgba(0,0,0,0.4))
+}
+
+.letter {
+    display: inline-flex;
+    min-width: 0.5ch;
+}
+
+
+.upper-text {
+    color: white;
+    text-align: center;
+    font-size: 52px;
+    margin-bottom: 1rem;
+}
+
+.upper-text>.letter {
+    animation: bubble 10s ease infinite;
+    opacity:0.8;
+}
+
+@keyframes bubble {
+    0% {
+        transform: perspective(300px) translateZ(0);
+        opacity:0.8;
+    }
+    3% {
+        transform: perspective(300px) translateZ(30px);
+        opacity: 1;
+    }
+    6% {
+        transform: perspective(300px) translateZ(0);
+        opacity:0.8;
+    }
+}
+
+.text-tiny {
+    font-size: 36px;
+}
+
+
+.accented-text {
+    display: flex;
+    align-items: center;
+    overflow:hidden;
+    font-size: 144px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    animation: bounce 20s ease forwards infinite;
+}
+
+.accented-text>.letter {
+    animation: hide 20s ease infinite;
+}
+
+@keyframes hide {
+    25% {
+        transform: scaleX(1) scaleY(1) translateY(0);
+        filter: blur(0px);
+        opacity: 1;
+    }
+    
+    27% {
+        transform: scaleX(0.7) scaleY(1.3) translateY(-100%);
+        filter: blur(12px);
+        opacity: 1;
+    }
+    30% {
+        transform: scaleX(0.7) scaleY(1.3) translateY(-100%);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    31% {
+        transform: scaleX(0.7) scaleY(1.3) translateY(100%);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    35% {
+        transform: scaleX(0.7) scaleY(1.3) translateY(100%);
+        filter: blur(12px);
+        opacity: 1;
+    }
+    
+    37% {
+        transform: scaleX(1) scaleY(1) translateY(0);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
